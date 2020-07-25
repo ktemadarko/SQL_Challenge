@@ -29,7 +29,7 @@ SELECT DATE_TRUNC('month',when_created) AS month2018,
 	FROM agent_transactions
 	WHERE when_created BETWEEN '2018-01-01' AND '2018-12-31 23:59:59'
 	GROUP BY month2018
-  ORDER BY month2018 ASC;
+  	ORDER BY month2018 ASC;
 
 
 5. Over the course of the last week, how many Wave agents were “net depositors” vs. “netwithdrawers”? 
@@ -55,11 +55,11 @@ country text
 city text);
 
 SELECT
-	city, when_created,
-	COUNT (DISTINCT atx_id) AS total_volume_of_transactions
-	FROM public.atx_volume_city_summary
-	WHERE when_created>= NOW() - interval '1 week'
-	GROUP BY city, when_created;
+city, when_created,
+COUNT (DISTINCT atx_id) AS total_volume_of_transactions
+FROM public.atx_volume_city_summary
+WHERE when_created>= NOW() - interval '1 week'
+GROUP BY city, when_created;
   -- The output of the above code should give a table showing columns city, when_created and  total_volume_of_transactions
   
   
@@ -90,7 +90,7 @@ SELECT
   SELECT country,transfer_kind, 
 	COUNT(send_volume_id) AS total_volume_of_transactions
 	FROM public.send_volume_by_country_kind
-  WHERE when_created>= NOW() - interval '1 week'
+  	WHERE when_created>= NOW() - interval '1 week'
 	GROUP BY country,transfer_kind;
   
   
